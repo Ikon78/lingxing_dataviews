@@ -1,0 +1,12 @@
+{
+  "name": "lingxing-field-merger",
+  "version": "1.4.81",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/run-tests.mjs",
+    "check": "node scripts/check-extension.mjs",
+    "privacy:check": "node scripts/privacy-check.mjs",
+    "export:github": "node scripts/export-github.mjs",
+    "release": "node scripts/release-archive.mjs"
+  }
+}

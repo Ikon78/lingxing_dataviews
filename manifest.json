@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "领星跨页面字段库",
+  "version": "1.4.81",
+  "description": "自动记录领星 ERP 含 MSKU 表格的字段，并将其他页面字段拖入当前主表。",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": ["https://*.lingxing.com/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "领星跨页面字段库",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.lingxing.com/erp/*"],
+      "js": ["page-network.js", "page-table.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://*.lingxing.com/erp/*"],
+      "js": ["shipment-detail.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
